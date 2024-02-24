@@ -60,3 +60,24 @@ IntelliJを開き、Open→配置したフォルダを選択
 プロジェクトを開いた後、JDKのセットアップができていない旨のメッセージが表示される場合がある。  
 その場合、メッセージと共に表示されている「Setup JDK」をクリックし、  
 Amazon Correttoインストールディレクトリを選択することで問題は解消される。
+
+<br />
+
+## 開発環境の自動リロード設定
+Spring Bootでは、開発環境で実装している際、実装後の状態に開発環境をリロードすることができる。  
+以下に、IntelliJで自動リロードするための設定方法を記載する。  
+
+### IntelliJの設定変更
+File > Settings > Build, Execution, Deployment > Compiler
+以下にチェックを入れ、「Apply」をクリックする。  
+　Build project automatically
+![img_2.png](img_2.png)
+
+同じ設定画面にて、Advanced Settingsに遷移し、以下にチェックを入れ、「Apply」をクリックする。  
+　Allow auto-make to start even if developed application is currently running.
+![img_3.png](img_3.png)
+
+### ライブラリをpomに追加
+以下のライブラリをpomに追加し、pomをリロードする。  
+　spring-boot-devtools
+![img_4.png](img_4.png)

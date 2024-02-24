@@ -63,12 +63,40 @@ Amazon Correttoインストールディレクトリを選択することで問�
 
 <br />
 
-## 開発環境の自動リロード設定
+## Spring Boot Actuator
+Spring Bootアプリケーションの監視と管理を支援するための拡張機能。
+REST APIでこれらの情報を提供する。  
+以下のライブラリをpom.xmlに追加することで利用できる。 
+```pom.xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+APIへは以下のURLでアクセスする。  
+　https://<アプリのURL>/actuator/<エンドポイント名>
+
+デフォルトではhealthエンドポイントのみ公開される。  
+application.propertiesで必要に応じて公開するエンドポイントを指定する。
+```pom.xml
+management.endpoints.web.exposure.include=health,info
+management.info.env.enabled=true
+```
+
+
+### REST APIの種類
+health：アプリケーションのヘルスチェックに関する情報を提供  
+info：アプリケーションの各種情報を提供。提供する情報はapplication.propertiesで定義する。  
+mappings：アプリケーションのREST APIのリストを提供
+
+<br />
+
+## 開発環境の自動リロード設定。
 Spring Bootでは、開発環境で実装している際、実装後の状態に開発環境をリロードすることができる。  
 以下に、IntelliJで自動リロードするための設定方法を記載する。  
 
 ### IntelliJの設定変更
-File > Settings > Build, Execution, Deployment > Compiler
+File > Settings > Build, Execution, Deployment > Compiler  
 以下にチェックを入れ、「Apply」をクリックする。  
 　Build project automatically
 ![img_2.png](img_2.png)
